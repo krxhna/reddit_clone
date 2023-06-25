@@ -18,15 +18,14 @@ const Home: NextPage = () => {
       <div className="flex h-full min-h-screen w-full flex-col items-center justify-center overflow-y-scroll  bg-zinc-900">
         {/* <div className="h-20 bg-white border">fsdfds</div> */}
         <div className="h-[80vh]">
-          <Homecard />
-          <Homecard />
-          <Homecard />
-          <Homecard />
-          <Homecard />
-          <Homecard />
-          <Homecard />
-          <Homecard />
-          <Homecard />
+          <Homecard
+            upvotes={34}
+            date={4569}
+            username="u/gothlover"
+            content="content"
+            title="title"
+            topic="r/cats"
+          />
         </div>
       </div>
     </div>
@@ -40,17 +39,18 @@ const Homecard = (props: any) => {
         <div className="m-5 flex h-52 max-h-96 w-[40rem]  gap-2 border border-zinc-700 bg-zinc-800 p-3 text-white shadow-lg">
           <div className="flex flex-col items-center gap-2 p-3">
             <ArrowUpCircleIcon className="h-7 w-7" />
-            <p className=" font-bold">99</p>
+            <p className=" font-bold">{props.upvotes}</p>
             <ArrowDownCircleIcon className="h-7 w-7" />
           </div>
           <div className="d">
             <span className="my-2 flex gap-2 text-sm text-gray-400">
-              <p className="font-bold text-gray-100">r/aww</p>
-              <p className="">date</p>
-              <p className="">user</p>
+              <p className="font-bold text-gray-100">{props.topic}</p>
+
+              <p className="">{props.date}</p>
+              <p className="">{props.username}</p>
             </span>
-            <h1 className="text-2xl font-bold ">hello</h1>
-            <p className="">hello</p>
+            <h1 className="text-2xl font-bold ">{props.title}</h1>
+            <p className="">{props.content}</p>
           </div>
         </div>
       </main>
