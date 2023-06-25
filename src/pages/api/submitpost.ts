@@ -4,16 +4,16 @@ const prisma = new PrismaClient();
 
 export default async function handler(req: any, res: any) {
   if (req.method === "POST") {
-    const { title, content } = req.body;
+    const { title, content, topic, username } = req.body;
 
     try {
       const createdPost = await prisma.posts.create({
         data: {
           title: title,
           content: content,
-          topic: "test",
-          upvotes: 5,
-          username: "u/testbase",
+          topic: topic,
+          upvotes: 0,
+          username: username,
         },
       });
 
