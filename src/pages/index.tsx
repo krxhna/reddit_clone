@@ -4,8 +4,20 @@ import {
   ArrowUpCircleIcon,
   ArrowDownCircleIcon,
 } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
+  function getposts() {
+    fetch("/api/posts")
+      .then((res) => res.json())
+      .then((data) => setPosts(data));
+  }
+
+  const [posts, setPosts] = useState<any[]>([]);
+
+  useEffect(() => {
+    getposts();
+  }, []);
   return (
     <div className="flex h-screen ">
       <div className="flex h-screen w-96 items-center justify-center bg-black p-4">
@@ -20,14 +32,18 @@ const Home: NextPage = () => {
       <div className="flex h-full min-h-screen w-full flex-col items-center justify-center overflow-y-scroll  bg-zinc-900">
         {/* <div className="h-20 bg-white border">fsdfds</div> */}
         <div className="h-[80vh]">
-          <Homecard
-            upvotes={34}
-            date={4569}
-            username="u/gothlover"
-            content="content"
-            title="title"
-            topic="r/cats"
-          />
+          <div>
+            {posts.map((item, index) => (
+              <Homecard
+                upvotes={item.upvotes}
+                date={item.createdAt}
+                username={item.username}
+                content={item.content}
+                title={item.title}
+                topic={item.topic}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -46,12 +62,12 @@ const Homecard = (props: any) => {
           </div>
           <div className="d">
             <span className="my-2 flex gap-2 text-sm text-gray-400">
-              <p className="font-bold text-gray-100">{props.topic}</p>
+              <p className="font-bold text-gray-100 ">{props.topic}</p>
 
               <p className="">{props.date}</p>
               <p className="">{props.username}</p>
             </span>
-            <h1 className="text-2xl font-bold ">{props.title}</h1>
+            <h1 className="text-2xl font-bold capitalize">{props.title}</h1>
             <p className="">{props.content}</p>
           </div>
         </div>
