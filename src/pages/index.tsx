@@ -10,7 +10,9 @@ const Home: NextPage = () => {
     <div className="flex h-screen ">
       <div className="flex h-screen w-96 items-center justify-center bg-black p-4">
         <div className="flex h-32 flex-col items-center justify-center gap-4">
-          <button className="bg-white p-3 ">create a post</button>
+          <a href="/submit" target="_blank" rel="noreferrer">
+            <button className="bg-white p-3 ">create a post</button>
+          </a>
           <button className="bg-black p-3 text-white">create a post</button>
         </div>
       </div>
