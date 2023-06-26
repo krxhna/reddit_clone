@@ -4,6 +4,9 @@ import {
   ArrowUpCircleIcon,
   ArrowDownCircleIcon,
 } from "@heroicons/react/24/outline";
+
+import { differenceInHours } from "date-fns";
+
 import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
@@ -68,12 +71,15 @@ const Homecard = (props: any) => {
                 <a
                   className="font-bold text-gray-100 "
                   href={"r/" + props.topic}
-                >r/
+                >
+                  r/
                   {props.topic}
                 </a>
 
-                <p className="">{props.date}</p>
-                <p className="">{props.username}</p>
+                <p className="">posted by u/{props.username}</p>
+                <p className="">
+                  {differenceInHours(new Date(), Date.parse(props.date))} hours ago
+                </p>
               </span>
               <h1 className="text-2xl font-bold capitalize">{props.title}</h1>
               <p className="">{props.content}</p>

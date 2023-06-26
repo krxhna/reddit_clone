@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { differenceInHours } from "date-fns";
 
 const topic: NextPage = () => {
   const [posts, setPosts] = useState<any[]>([]);
@@ -72,16 +73,11 @@ const Homecard = (props: any) => {
           <div className="flex flex-col">
             <div className="h-52 overflow-hidden">
               <span className="my-2 flex gap-2 text-sm text-gray-400">
-                <a
-                  className="font-bold text-gray-100 "
-                  href={"r/" + props.topic}
-                >
-                  r/
-                  {props.topic}
-                </a>
-
-                <p className="">{props.date}</p>
-                <p className="">{props.username}</p>
+                <p className="">posted by u/{props.username}</p>
+                <p className="">
+                  {differenceInHours(new Date(), Date.parse(props.date))} hours
+                  ago
+                </p>
               </span>
               <h1 className="text-2xl font-bold capitalize">{props.title}</h1>
               <p className="">{props.content}</p>
