@@ -54,7 +54,7 @@ const Submit = () => {
     { emoji: "🌍", topic: "Environment" },
     { emoji: "🚑", topic: "Health" },
     { emoji: "🏥", topic: "Medicine" },
-    { emoji: "🚓", topic: "Law Enforcement" },
+    { emoji: "🚓", topic: "Law" },
     { emoji: "🍣", topic: "Sushi" },
     { emoji: "🏀", topic: "Basketball" },
     { emoji: "🎯", topic: "Goals" },

@@ -5,19 +5,24 @@ import {
   ArrowDownCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-const Home: NextPage = () => {
-  function getposts() {
-    fetch("/api/posts")
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
-  }
-
+const topic: NextPage = () => {
   const [posts, setPosts] = useState<any[]>([]);
+
+  let router = useRouter();
+  const topic = router.query.topic;
+  function getposts() {
+    if (topic) {
+      fetch(`/api/posts?topic=${topic}`)
+        .then((res) => res.json())
+        .then((data) => setPosts(data));
+    }
+  }
 
   useEffect(() => {
     getposts();
-  }, []);
+  }, [topic]);
   return (
     <div className="flex h-screen ">
       <div className="flex h-screen w-96 items-center justify-center bg-black p-4">
@@ -29,8 +34,10 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="flex h-full min-h-screen w-full  flex-col items-center justify-center overflow-y-scroll  bg-zinc-900">
-        {/* <div className="h-20 bg-white border">fsdfds</div> */}
+      <div className="flex h-full min-h-screen w-full  flex-col items-center overflow-y-scroll  bg-zinc-900">
+        <div className="sticky top-0 flex h-20 w-full items-center  justify-center bg-zinc-900 text-3xl  font-semibold text-white">
+          <span>r/{topic}</span>
+        </div>
         <div className="h-[80vh] p-10">
           <div>
             {posts.map((item, index) => (
@@ -68,7 +75,8 @@ const Homecard = (props: any) => {
                 <a
                   className="font-bold text-gray-100 "
                   href={"r/" + props.topic}
-                >r/
+                >
+                  r/
                   {props.topic}
                 </a>
 
@@ -90,4 +98,4 @@ const Homecard = (props: any) => {
   );
 };
 
-export default Home;
+export default topic;
