@@ -35,12 +35,14 @@ const Home: NextPage = () => {
           <div>
             {posts.map((item, index) => (
               <Homecard
+                key={item.id}
                 upvotes={item.upvotes}
                 date={item.createdAt}
                 username={item.username}
                 content={item.content}
                 title={item.title}
                 topic={item.topic}
+                id={item.id}
               />
             ))}
           </div>
@@ -54,27 +56,29 @@ const Homecard = (props: any) => {
   return (
     <>
       <main>
-        <div className="m-5 flex h-52 max-h-96 w-[40rem] overflow-hidden   gap-2 border border-zinc-700 bg-zinc-800 p-3 text-white shadow-lg">
+        <div className="m-5 flex h-52 max-h-96 w-[40rem] gap-2   overflow-hidden border border-zinc-700 bg-zinc-800 p-3 text-white shadow-lg">
           <div className="flex flex-col items-center gap-2 p-3">
             <ArrowUpCircleIcon className="h-7 w-7" />
             <p className=" font-bold">{props.upvotes}</p>
             <ArrowDownCircleIcon className="h-7 w-7" />
           </div>
           <div className="flex flex-col">
+            <div className="h-52 overflow-hidden">
+              <span className="my-2 flex gap-2 text-sm text-gray-400">
+                <p className="font-bold text-gray-100 ">{props.topic}</p>
 
-          <div className="h-52 overflow-hidden">
-            <span className="my-2 flex gap-2 text-sm text-gray-400">
-              <p className="font-bold text-gray-100 ">{props.topic}</p>
-
-              <p className="">{props.date}</p>
-              <p className="">{props.username}</p>
-            </span>
-            <h1 className="text-2xl font-bold capitalize">{props.title}</h1>
-            <p className="">{props.content}</p>
+                <p className="">{props.date}</p>
+                <p className="">{props.username}</p>
+              </span>
+              <h1 className="text-2xl font-bold capitalize">{props.title}</h1>
+              <p className="">{props.content}</p>
+            </div>
+            <a href={"/post/" + props.id}>
+              <div className="my-3 flex gap-2 text-sm text-gray-400">
+                Read more
+              </div>
+            </a>
           </div>
-          <div className="flex gap-2 text-sm text-gray-400 my-3">Read more</div>
-          </div>
-
         </div>
       </main>
     </>
