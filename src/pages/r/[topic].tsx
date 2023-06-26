@@ -36,7 +36,7 @@ const topic: NextPage = () => {
       </div>
 
       <div className="flex h-full min-h-screen w-full  flex-col items-center overflow-y-scroll  bg-zinc-900">
-        <div className="sticky top-0 flex h-20 w-full items-center  justify-center bg-zinc-900 text-3xl  font-semibold text-white">
+        <div className="sticky top-0 flex h-20 w-full items-center  justify-center bg-zinc-900 text-3xl  font-bold  text-green-500">
           <span>r/{topic}</span>
         </div>
         <div className="h-[80vh] p-10">

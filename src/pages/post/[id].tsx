@@ -1,7 +1,7 @@
 // pages/post/[id].js
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {XMarkIcon} from "@heroicons/react/24/outline"
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function PostPage() {
   const [post, setPost] = useState<any>();
@@ -26,29 +26,35 @@ export default function PostPage() {
     getPost();
   }, [id]);
 
-  if(loading){
-    return  <div className=" text-white flex justify-center items-center h-screen w-screen bg-zinc-900">
-      <span>
-      loading...
-      </span>
-    </div>
+  if (loading) {
+    return (
+      <div className=" flex h-screen w-screen items-center justify-center bg-zinc-900 text-white">
+        <span>loading...</span>
+      </div>
+    );
   }
 
   return (
-    <div className="flex h-full  min-h-screen  items-center justify-center overflow-x-hidden  bg-zinc-900 p-10 ">
+    <div className="flex h-full  min-h-screen  items-center justify-center overflow-x-hidden  bg-zinc-800 p-10 ">
       <div className="fixed inset-0 flex h-12 items-center justify-center gap-4 bg-black text-white ">
         {/* <span>{post?.title}</span> */}
-        <a href="/" className="flex justify-center items-center gap-2 hover:text-red-500">
-        <XMarkIcon className="h-4 w-4 cursor-pointer"/>
+        <a
+          href="/"
+          className="flex items-center justify-center gap-2 hover:text-red-500"
+        >
+          <XMarkIcon className="h-4 w-4 cursor-pointer" />
           <span>Close</span>
-          </a>
+        </a>
       </div>
-      <div className="h-full max-w-2xl  overflow-x-hidden bg-zinc-900 p-5">
+      <div className="flex h-full  max-w-2xl flex-col gap-4 overflow-x-hidden bg-zinc-900 p-5">
         {/* <div>{post?.title}</div> */}
         <span className=" flex items-center gap-3 text-gray-500">
-          <p className="my-3 bg-orange-500 px-3 py-1 font-semibold text-white">
-            {post?.topic}
-          </p>
+          <a
+            href={"/r/" + post?.topic}
+            className="my-3 text-green-500 px-3 py-1 font-semibold "
+          >
+            r/{post?.topic}
+          </a>
           <p>{post?.createdAt}</p>
           <p>{post?.username}</p>
         </span>

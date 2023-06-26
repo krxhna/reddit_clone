@@ -32,8 +32,21 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <div className="flex h-full min-h-screen w-full  flex-col items-center justify-center overflow-y-scroll  bg-zinc-900">
-        {/* <div className="h-20 bg-white border">fsdfds</div> */}
+      <div className="flex h-full min-h-screen w-full  flex-col items-center  overflow-y-scroll  bg-zinc-900">
+        <div className="sticky  top-0 flex h-20 w-full items-center justify-center gap-4 bg-zinc-900">
+          <img
+            src="https://em-content.zobj.net/thumbs/120/apple/354/lizard_1f98e.png"
+            className="h-10"
+            alt=""
+          />
+          <span className="font-bold text-green-500">LEDDIT</span>
+          {/* <input
+            type="text"
+            className="text border border-zinc-800 bg-zinc-900 p-3 text-white"
+            name=""
+            id=""
+          /> */}
+        </div>
         <div className="h-[80vh] p-10">
           <div>
             {posts.map((item, index) => (
@@ -78,7 +91,8 @@ const Homecard = (props: any) => {
 
                 <p className="">posted by u/{props.username}</p>
                 <p className="">
-                  {differenceInHours(new Date(), Date.parse(props.date))} hours ago
+                  {differenceInHours(new Date(), Date.parse(props.date))} hours
+                  ago
                 </p>
               </span>
               <h1 className="text-2xl font-bold capitalize">{props.title}</h1>
